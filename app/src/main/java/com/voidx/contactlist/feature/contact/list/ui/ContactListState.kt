@@ -13,6 +13,8 @@ data class ContactListState(
 
 sealed class ContactListSideState {
 
+    object Nothing: ContactListSideState()
+
     data class CreateContact(
         val contact: Contact
     ) : ContactListSideState()

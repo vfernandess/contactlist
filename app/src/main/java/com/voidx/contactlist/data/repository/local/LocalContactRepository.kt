@@ -23,7 +23,7 @@ class LocalContactRepository @Inject constructor(
         emit(true)
     }
 
-    override fun getById(id: Int): Flow<Contact?> = flow {
-        emit(database.contacts.getOrNull(id - 1))
+    override fun exists(id: Int): Flow<Boolean> = flow {
+        emit(database.contacts.any { it.id == id })
     }
 }

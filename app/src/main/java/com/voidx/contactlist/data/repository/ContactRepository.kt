@@ -12,7 +12,7 @@ interface ContactRepository {
 
     fun update(contact: Contact): Flow<Boolean>
 
-    fun getById(id: Int): Flow<Contact?>
+    fun exists(id: Int): Flow<Boolean>
 
     class Impl @Inject constructor(
         private val localContactRepository: ContactRepository
@@ -26,7 +26,7 @@ interface ContactRepository {
         override fun update(contact: Contact): Flow<Boolean> =
             localContactRepository.update(contact)
 
-        override fun getById(id: Int): Flow<Contact?> =
-            localContactRepository.getById(id)
+        override fun exists(id: Int): Flow<Boolean> =
+            localContactRepository.exists(id)
     }
 }
