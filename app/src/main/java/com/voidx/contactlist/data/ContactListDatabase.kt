@@ -30,10 +30,11 @@ interface ContactListDatabase {
                                 count++
                                 continue
                             }
-                            count++
 
                             val row: List<String> = line!!.split(";")
                             contacts.add(buildContact(id = count, row))
+
+                            count++
                         }
                     }
                 }
