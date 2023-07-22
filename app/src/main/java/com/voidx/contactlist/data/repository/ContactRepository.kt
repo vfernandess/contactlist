@@ -8,7 +8,11 @@ interface ContactRepository {
 
     fun listAll(): Flow<List<Contact>>
 
-    fun createOrUpdate(contact: Contact): Flow<Boolean>
+    fun create(contact: Contact): Flow<Boolean>
+
+    fun update(contact: Contact): Flow<Boolean>
+
+    fun getById(id: Int): Flow<Contact?>
 
     class Impl @Inject constructor(
         private val localContactRepository: ContactRepository
@@ -16,7 +20,13 @@ interface ContactRepository {
         override fun listAll(): Flow<List<Contact>> =
             localContactRepository.listAll()
 
-        override fun createOrUpdate(contact: Contact): Flow<Boolean> =
-            localContactRepository.createOrUpdate(contact)
+        override fun create(contact: Contact): Flow<Boolean> =
+            localContactRepository.create(contact)
+
+        override fun update(contact: Contact): Flow<Boolean> =
+            localContactRepository.update(contact)
+
+        override fun getById(id: Int): Flow<Contact?> =
+            localContactRepository.getById(id)
     }
 }

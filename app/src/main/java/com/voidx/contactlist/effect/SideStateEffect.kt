@@ -5,7 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun <SideState> OnSideStateEffect(effect: Flow<SideState>, block: (SideState) -> Unit) {
+fun <SideState> SideStateEffect(effect: Flow<SideState>, block: (SideState) -> Unit) {
     LaunchedEffect(Unit) {
         effect.collect(block)
     }

@@ -2,27 +2,45 @@ package com.voidx.contactlist.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
 @Parcelize
+@Serializable
 data class Contact(
     val id: Int,
-    val firstName: String,
-    val lastName: String,
-    val companyName: String,
-    val address: String,
-    val city: String,
-    val county: String,
-    val state: String,
-    val zip: String,
-    val phone: String,
-    val phone1: String,
-    val email: String,
+    var firstName: String,
+    var lastName: String,
+    var companyName: String,
+    var address: String,
+    var city: String,
+    var county: String,
+    var state: String,
+    var zip: String,
+    var phone: String,
+    var phone1: String,
+    var email: String,
 ) : Parcelable {
 
     val name: String
         get() = "$firstName $lastName"
 
-    override fun hashCode(): Int {
-        return id
+    companion object {
+
+        fun empty(): Contact {
+            return Contact(
+                id = -1,
+                firstName = "",
+                lastName = "",
+                companyName = "",
+                address = "",
+                city = "",
+                county = "",
+                state = "",
+                zip = "",
+                phone = "",
+                phone1 = "",
+                email = "",
+            )
+        }
     }
 }

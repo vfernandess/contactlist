@@ -29,7 +29,10 @@ object ContactNavigation : NavigationRouter {
             }
 
             composable(router = ContactDetailRouter) {
-                ContactDetailScreen()
+                ContactDetailScreen(
+                    onContactSaved = controller::navigateUp,
+                    onBackPressed = controller::navigateUp,
+                )
             }
         }
     }

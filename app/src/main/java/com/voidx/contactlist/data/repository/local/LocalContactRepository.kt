@@ -14,7 +14,16 @@ class LocalContactRepository @Inject constructor(
         emit(database.contacts)
     }
 
-    override fun createOrUpdate(contact: Contact): Flow<Boolean> = flow {
+    override fun create(contact: Contact): Flow<Boolean> = flow {
         emit(database.contacts.add(contact))
+    }
+
+    override fun update(contact: Contact): Flow<Boolean> = flow {
+        database.contacts[contact.id - 1] = contact
+        emit(true)
+    }
+
+    override fun getById(id: Int): Flow<Contact?> = flow {
+        emit(database.contacts.getOrNull(id - 1))
     }
 }

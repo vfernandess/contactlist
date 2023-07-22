@@ -25,7 +25,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.voidx.contactlist.R
 import com.voidx.contactlist.data.model.Contact
 import com.voidx.contactlist.effect.LifecycleEffect
-import com.voidx.contactlist.effect.OnSideStateEffect
+import com.voidx.contactlist.effect.SideStateEffect
 import com.voidx.contactlist.feature.contact.list.business.ContactListViewModel
 import com.voidx.contactlist.ui.theme.ContactListTheme
 
@@ -44,7 +44,7 @@ fun ContactListScreen(
         }
     )
 
-    OnSideStateEffect(viewModel.sideState) {
+    SideStateEffect(viewModel.sideState) {
         if (it is ContactListSideState.CreateContact) {
             onContactSelected(it.contact)
         }
